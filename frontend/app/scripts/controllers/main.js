@@ -14,22 +14,22 @@ angular.module('materialApp')
       'AngularJS',
       'Karma'
     ];
-      $scope.countries =  null;
 
+      $scope.countries =  null;
       $timeout(function () {
 
-        $scope.getUsers();
+        $scope.getCountries();
 
       }, 1);
 
 
-      $scope.getUsers = function()
+      $scope.getCountries = function()
       {
-        var getUsersMethod = Restangular.all('sample/show');
+        var getCountriesMethod = Restangular.all('country/show');
 
-        getUsersMethod.post().then(function (response) {
+        getCountriesMethod.post().then(function (response) {
 
-            $scope.users = response[0];
+          $scope.countries = response.body;
         });
       };
 
