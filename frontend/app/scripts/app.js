@@ -15,9 +15,16 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+        'restangular'
   ])
-  .config(function ($routeProvider) {
+    .config(function(RestangularProvider) {
+      RestangularProvider.setBaseUrl('http://localhost:8000');
+      RestangularProvider.setDefaultHeaders({ "Content-Type": "application/json" });
+    })
+
+
+    .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
